@@ -13,7 +13,7 @@ public abstract class Medium implements Serializable{
     private String titel;
     private int jahr;
     //counter to increment id
-    private static int idCounter = 0;
+    private static transient int idCounter = 0;
 
     //Constructor
     public Medium(String titel, int jahr) {
@@ -51,5 +51,9 @@ public abstract class Medium implements Serializable{
 
     public void setTitel(String titel) {
         this.titel = titel;
+    }
+
+    public static void setIdCounter(int i) {
+        idCounter = i;
     }
 }

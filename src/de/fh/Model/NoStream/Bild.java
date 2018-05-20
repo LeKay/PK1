@@ -14,7 +14,7 @@ public class Bild extends Medium {
     //Methods
     @Override
     public void druckeDaten() {
-        System.out.println("ID = " + getId() + '"' + ' ' + getTitel() + '"' + " aufgenommen im Jahr " + getJahr()
+        System.out.println("ID = " + getId() + ' ' + '"' + getTitel() + '"' + " aufgenommen im Jahr " + getJahr()
                     + " in " + getOrt());
     }
 

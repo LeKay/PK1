@@ -22,9 +22,15 @@ public class Bild extends Medium implements Serializable{
     @Override
     public void druckeDaten(OutputStream stream) {
         PrintWriter ps = new PrintWriter(stream);
-        ps.printf(Locale.GERMANY, "ID = " + getId() + '"' + ' ' + getTitel() + '"' + " aufgenommen im Jahr " + getJahr()
+        ps.printf(Locale.GERMANY, "ID = " + getId()+ ' ' + '"'  + getTitel() + '"' + " aufgenommen im Jahr " + getJahr()
                     + " in " + getOrt() + "\n");
         ps.flush();
+    }
+
+    @Override
+    public String toString() {
+        return "ID = " + getId()+ ' ' + '"'  + getTitel() + '"' + " aufgenommen im Jahr " + getJahr()
+                + " in " + getOrt() + "\n";
     }
 
     //Getter and Setter

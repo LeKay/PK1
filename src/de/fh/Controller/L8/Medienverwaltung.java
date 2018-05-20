@@ -1,11 +1,10 @@
-package de.fh.Controller.WithStream;
+package de.fh.Controller.L8;
 
 import de.fh.Model.WithStream.Medium;
 
 import java.io.*;
-import java.util.LinkedList;
-import java.util.Collection;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 public class Medienverwaltung {
@@ -30,22 +29,21 @@ public class Medienverwaltung {
             m.druckeDaten(stream);
     }
 
-    public Medium sucheNeuesMedium() {
+    public void sucheNeuesMedium() {
         //Use of an Iterator
         Iterator<Medium> iterator = medien.iterator();
-        Medium youngestMedium = null;
         //Secure if Collection is empty
         if(iterator.hasNext()) {
             //Assign the first entry
-             youngestMedium = iterator.next();
+            Medium youngestMedium = iterator.next();
             while(iterator.hasNext()){
                 Medium m = iterator.next();
                 if(youngestMedium.alter() > m.alter()) {
                     youngestMedium = m;
                 }
             }
+            youngestMedium.druckeDaten(System.out);
         }
-        return youngestMedium;
     }
 
     public double berechneErscheinungsJahr() {

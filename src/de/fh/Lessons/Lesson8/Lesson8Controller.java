@@ -1,6 +1,6 @@
 package de.fh.Lessons.Lesson8;
 
-import de.fh.Controller.WithStream.Medienverwaltung;
+import de.fh.Controller.L8.Medienverwaltung;
 import de.fh.Model.WithStream.Audio;
 import de.fh.Model.WithStream.Bild;
 import de.fh.Model.WithStream.Medium;
@@ -10,8 +10,6 @@ import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 import java.io.*;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -55,6 +53,8 @@ public class Lesson8Controller implements IMvDAO{
         } catch (Exception e) {
             throw new PersistenzException(e.getMessage(), e.getCause());
         }
+        //set the idCounter
+        Medium.setIdCounter(list.size());
         return list;
     }
 

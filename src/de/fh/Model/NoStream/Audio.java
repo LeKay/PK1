@@ -16,7 +16,7 @@ public class Audio extends Medium{
     //Methods
     @Override
     public void druckeDaten() {
-        System.out.println("ID = " + getId() + '"' + ' ' + getTitel() + '"' + " von " + getInterpret()
+        System.out.println("ID = " + getId() + ' ' + '"' + getTitel() + '"' + " von " + getInterpret()
                 + " aus " + getJahr() + " Spieldauer: " + getDauer() + " sek.");
     }
 

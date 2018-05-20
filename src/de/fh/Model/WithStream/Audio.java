@@ -24,9 +24,15 @@ public class Audio extends Medium implements Serializable{
     @Override
     public void druckeDaten(OutputStream stream) {
         PrintStream ps = new PrintStream(stream);
-        ps.printf(Locale.GERMANY, "ID = " + getId() + '"' + ' ' + getTitel() + '"' + " von " + getInterpret()
+        ps.printf(Locale.GERMANY, "ID = " + getId() + ' ' + '"' + getTitel() + '"' + " von " + getInterpret()
                 + " aus " + getJahr() + " Spieldauer: " + getDauer() + " sek.\n");
         ps.flush();
+    }
+
+    @Override
+    public String toString() {
+        return"ID = " + getId() + ' ' + '"' + getTitel() + '"' + " von " + getInterpret()
+                + " aus " + getJahr() + " Spieldauer: " + getDauer() + " sek.\n";
     }
 
     //Getter and Setter
