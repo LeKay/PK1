@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane fx:id="window" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.fh.Lessons.Lesson8.Lesson8Controller">
+   <children>
+      <MenuBar prefHeight="30.0" prefWidth="600">
+        <menus>
+          <Menu text="Menü">
+            <items>
+              <MenuItem text="Audio aufnehmen" />
+              <MenuItem text="Bild aufnehmen" />
+              <MenuItem onAction="#showAllMedia" text="Zeige alle Medien" />
+              <MenuItem onAction="#saveList" text="Medienliste in Datei schreiben" />
+              <MenuItem text="Zeige neues Medium" />
+              <MenuItem text="Berechne durschnittliches Erscheinungsjahr" />
+              <MenuItem onAction="#save" text="Speichern" />
+              <MenuItem onAction="#load" text="Laden" />
+              <MenuItem onAction="#close" text="Beenden" />
+            </items>
+          </Menu>
+        </menus>
+      </MenuBar>
+      <Label alignment="CENTER" layoutY="40.0" prefHeight="370.0" prefWidth="600.0" text="Bitte Menüpunkt wählen!">
+         <font>
+            <Font size="28.0" />
+         </font>
+      </Label>
+   </children>
+</AnchorPane>

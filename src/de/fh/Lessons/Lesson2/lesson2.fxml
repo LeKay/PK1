@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane prefHeight="200.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/8.0.121">
+   <children>
+      <Label layoutX="32.0" layoutY="85.0" text="Die Ausgabe des zweiten Blattes ist in der Konsole!">
+         <font>
+            <Font size="20.0" />
+         </font></Label>
+   </children>
+</AnchorPane>
