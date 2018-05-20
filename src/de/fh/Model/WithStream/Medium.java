@@ -13,11 +13,11 @@ public abstract class Medium implements Serializable{
     private String titel;
     private int jahr;
     //counter to increment id
-    private static final AtomicInteger idCounter = new AtomicInteger(-1);
+    private static int idCounter = 0;
 
     //Constructor
     public Medium(String titel, int jahr) {
-        this.id = idCounter.incrementAndGet();
+        this.id = idCounter++;
         this.titel = titel;
         this.jahr = jahr;
     }

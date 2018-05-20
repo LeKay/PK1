@@ -10,7 +10,6 @@ public class Audio extends Medium implements Serializable{
     //Attributes
     private String interpret;
     private int dauer;
-    static final long serialVersionUID = 42L;
 
     //Constructor
     public Audio(String titel, int jahr, String interpret, int dauer) {

@@ -9,7 +9,6 @@ public class Bild extends Medium implements Serializable{
 
     //Attributes
     private String ort;
-    static final long serialVersionUID = 42L;
 
     //Constructor
     public Bild(String titel, int jahr, String ort) {
