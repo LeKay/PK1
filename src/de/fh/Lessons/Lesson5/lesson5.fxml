@@ -13,12 +13,12 @@
         <menus>
           <Menu text="Menü">
             <items>
-              <MenuItem text="Audio aufnehmen" />
-              <MenuItem text="Bild aufnehmen" />
+              <MenuItem text="Audio aufnehmen" disable="true"/>
+              <MenuItem text="Bild aufnehmen" disable="true"/>
               <MenuItem text="Zeige alle Medien" onAction="#showAllMedia"/>
               <MenuItem text="Medienliste in Datei schreiben" onAction="#saveList"/>
-              <MenuItem text="Zeige neues Medium" />
-              <MenuItem text="Berechne durschnittliches Erscheinungsjahr" />
+              <MenuItem text="Zeige neues Medium" disable="true"/>
+              <MenuItem text="Berechne durschnittliches Erscheinungsjahr" disable="true"/>
               <MenuItem text="Beenden" onAction="#close"/>
             </items>
           </Menu>
