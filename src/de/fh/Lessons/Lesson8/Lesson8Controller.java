@@ -1,11 +1,13 @@
 package de.fh.Lessons.Lesson8;
 
 import de.fh.Controller.L8.Medienverwaltung;
+import de.fh.Lessons.Lesson8.Dialogs.AudioInputDialog;
 import de.fh.Lessons.Lesson8.Dialogs.PictureInputDialog;
 import de.fh.Model.WithStream.Audio;
 import de.fh.Model.WithStream.Bild;
 import de.fh.Model.WithStream.Medium;
-import javafx.scene.Scene;
+import javafx.collections.FXCollections;
+import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
@@ -17,9 +19,9 @@ import java.util.Optional;
 public class Lesson8Controller implements IMvDAO{
 
     //Attributes
+    public ListView<Medium> mediaList;
     public AnchorPane window;
-    public Medienverwaltung mv;
-    public DialogPane dialogPane;
+    private Medienverwaltung mv;
 
     //Constructor
     public Lesson8Controller() {
@@ -31,8 +33,12 @@ public class Lesson8Controller implements IMvDAO{
         mv.aufnehmen(pic1);
     }
 
-
     //Methods
+    public void initialize(){
+        //show data in mainframe
+        showData();
+    }
+
     @Override
     public void speichern(List<Medium> liste) throws PersistenzException {
         //Create File
@@ -66,6 +72,10 @@ public class Lesson8Controller implements IMvDAO{
             speichern(mv.getMedien());
         } catch (PersistenzException e) {
             System.out.println("Unable to Save Medialist: " + e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("Mediumsliste konnte nicht gespeichert werden!");
+            alert.show();
         }
     }
 
@@ -74,7 +84,12 @@ public class Lesson8Controller implements IMvDAO{
             mv.setMedien(laden());
         } catch (PersistenzException e) {
             System.out.println("Unable to Load Medialist: " + e.getMessage());
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("Mediumsliste konnte nicht geladen werden!");
+            alert.show();
         }
+        showData();
     }
 
     public void close() {
@@ -82,11 +97,35 @@ public class Lesson8Controller implements IMvDAO{
         stage.close();
     }
 
-    public void addPicture() throws IOException{
+    private void showData(){
+        ObservableList<Medium> media = FXCollections.observableList (mv.getMedien());
+        mediaList.setItems(media);
+    }
+
+    public void addAudio() throws IOException {
+        AudioInputDialog dialog = new AudioInputDialog();
+        Optional<Audio> result = dialog.showAndWait();
+        if(!result.isPresent()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("Bitte geben Sie ein gültiges Jahr und Länge ein!");
+            alert.show();
+        } else
+            result.ifPresent(audio -> mv.aufnehmen(audio));
+        showData();
+    }
+
+    public void addPicture() throws IOException {
         PictureInputDialog dialog = new PictureInputDialog();
         Optional<Bild> result = dialog.showAndWait();
-        if(result.isPresent())
-            mv.aufnehmen(result.get());
+        if(!result.isPresent()) {
+            Alert alert = new Alert(Alert.AlertType.ERROR);
+            alert.setTitle("Error");
+            alert.setContentText("Bitte geben Sie ein gültiges Jahr ein!");
+            alert.show();
+        } else
+            result.ifPresent(pic -> mv.aufnehmen(pic));
+        showData();
     }
 
     public void showAllMedia() {
@@ -101,7 +140,7 @@ public class Lesson8Controller implements IMvDAO{
 
         //Setup alert Dialog
         Alert alert = new Alert(Alert.AlertType.ERROR);
-        alert.setTitle("Message");
+        alert.setTitle("Error");
         alert.setContentText("Bitte ein gültigen Dateipfad eingeben");
         alert.setOnCloseRequest(event -> { alert.close();  saveList(); });
 
@@ -118,4 +157,17 @@ public class Lesson8Controller implements IMvDAO{
         }
     }
 
+    public void medianYear() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Durchschnittliches Erscheinungsjahr");
+        alert.setContentText("Durchschnittliches Erscheinungsjahr: " + mv.berechneErscheinungsJahr());
+        alert.show();
+    }
+
+    public void newestMedia() {
+        Alert alert = new Alert(Alert.AlertType.INFORMATION);
+        alert.setTitle("Neuestes Medium");
+        alert.setContentText(mv.sucheNeuesMedium().toString());
+        alert.show();
+    }
 }

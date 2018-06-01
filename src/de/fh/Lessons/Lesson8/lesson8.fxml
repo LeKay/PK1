@@ -1,20 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.*?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.Menu?>
+<?import javafx.scene.control.MenuBar?>
+<?import javafx.scene.control.MenuItem?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.text.Font?>
-<AnchorPane fx:id="window" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.76-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.fh.Lessons.Lesson8.Lesson8Controller">
+
+<AnchorPane fx:id="window" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.121" xmlns:fx="http://javafx.com/fxml/1" fx:controller="de.fh.Lessons.Lesson8.Lesson8Controller">
    <children>
       <MenuBar prefHeight="30.0" prefWidth="600">
         <menus>
           <Menu text="Menü">
             <items>
-              <MenuItem text="Audio aufnehmen" />
+              <MenuItem onAction="#addAudio" text="Audio aufnehmen" />
               <MenuItem onAction="#addPicture" text="Bild aufnehmen" />
               <MenuItem onAction="#showAllMedia" text="Zeige alle Medien" />
               <MenuItem onAction="#saveList" text="Medienliste in Datei schreiben" />
-              <MenuItem text="Zeige neues Medium" />
-              <MenuItem text="Berechne durschnittliches Erscheinungsjahr" />
+              <MenuItem onAction="#newestMedia" text="Zeige neues Medium" />
+              <MenuItem onAction="#medianYear" text="Berechne durschnittliches Erscheinungsjahr" />
               <MenuItem onAction="#save" text="Speichern" />
               <MenuItem onAction="#load" text="Laden" />
               <MenuItem onAction="#close" text="Beenden" />
@@ -22,10 +25,6 @@
           </Menu>
         </menus>
       </MenuBar>
-      <Label alignment="CENTER" layoutY="40.0" prefHeight="370.0" prefWidth="600.0" text="Bitte Menüpunkt wählen!">
-         <font>
-            <Font size="28.0" />
-         </font>
-      </Label>
+      <ListView fx:id="mediaList" layoutY="39.0" prefHeight="362.0" prefWidth="600.0" />
    </children>
 </AnchorPane>

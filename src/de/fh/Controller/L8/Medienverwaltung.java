@@ -29,24 +29,26 @@ public class Medienverwaltung {
             m.druckeDaten(stream);
     }
 
-    public void sucheNeuesMedium() {
+    public Iterator<Medium> iterator(){
+        return medien.iterator();
+    }
+
+    public Medium sucheNeuesMedium() {
         //Use of an Iterator
         Iterator<Medium> iterator = iterator();
+        Medium youngestMedium = null;
         //Secure if Collection is empty
         if(iterator.hasNext()) {
             //Assign the first entry
-            Medium youngestMedium = iterator.next();
+            youngestMedium = iterator.next();
             while(iterator.hasNext()){
                 Medium m = iterator.next();
-                if(youngestMedium.alter() > m.alter())
+                if(youngestMedium.alter() > m.alter()) {
                     youngestMedium = m;
+                }
             }
-            youngestMedium.druckeDaten(System.out);
         }
-    }
-
-    public Iterator<Medium> iterator() {
-        return medien.iterator();
+        return youngestMedium;
     }
 
     public double berechneErscheinungsJahr() {
