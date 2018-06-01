@@ -1,11 +1,12 @@
 package de.fh.Lessons.Lesson8;
 
 import de.fh.Controller.L8.Medienverwaltung;
+import de.fh.Lessons.Lesson8.Dialogs.PictureInputDialog;
 import de.fh.Model.WithStream.Audio;
 import de.fh.Model.WithStream.Bild;
 import de.fh.Model.WithStream.Medium;
-import javafx.scene.control.Alert;
-import javafx.scene.control.TextInputDialog;
+import javafx.scene.Scene;
+import javafx.scene.control.*;
 import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
@@ -18,6 +19,7 @@ public class Lesson8Controller implements IMvDAO{
     //Attributes
     public AnchorPane window;
     public Medienverwaltung mv;
+    public DialogPane dialogPane;
 
     //Constructor
     public Lesson8Controller() {
@@ -78,6 +80,13 @@ public class Lesson8Controller implements IMvDAO{
     public void close() {
         Stage stage = (Stage) window.getScene().getWindow();
         stage.close();
+    }
+
+    public void addPicture() throws IOException{
+        PictureInputDialog dialog = new PictureInputDialog();
+        Optional<Bild> result = dialog.showAndWait();
+        if(result.isPresent())
+            mv.aufnehmen(result.get());
     }
 
     public void showAllMedia() {

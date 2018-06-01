@@ -10,7 +10,7 @@
           <Menu text="Menü">
             <items>
               <MenuItem text="Audio aufnehmen" />
-              <MenuItem text="Bild aufnehmen" />
+              <MenuItem onAction="#addPicture" text="Bild aufnehmen" />
               <MenuItem onAction="#showAllMedia" text="Zeige alle Medien" />
               <MenuItem onAction="#saveList" text="Medienliste in Datei schreiben" />
               <MenuItem text="Zeige neues Medium" />

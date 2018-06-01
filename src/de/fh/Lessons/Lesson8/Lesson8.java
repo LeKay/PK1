@@ -21,7 +21,7 @@ public class Lesson8 {
         //Initiate Lesson8 window
         Parent root = FXMLLoader.load(getClass().getResource("lesson8.fxml"));
         Stage window = new Stage();
-        window.setTitle("Lesson 6");
+        window.setTitle("Lesson 8");
         window.setScene(new Scene(root));
         window.show();
     }
